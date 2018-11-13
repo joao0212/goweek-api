@@ -1,7 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
@@ -16,7 +18,6 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use(require('./routes'));
-app.user(cors());
 
 server.listen('3001', () => {
     console.log('Server started on port 3001');
